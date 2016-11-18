@@ -1,0 +1,54 @@
+import exspress from 'express';
+
+import fetch from 'isomorphic-fetch';
+import  async from 'asyncawait/async';
+import await from 'asyncawait/await';
+import prom from "bluebird";
+import path from "path";
+import logger from "morgan";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+import cors from "cors";
+import favicon from 'serve-favicon';
+
+const users = require('./users');
+const app = exspress();
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(cors());
+
+
+app.get('/', function(req, res, next){
+    res.send('hello world');
+});
+
+app.use('/users', users);
+
+
+
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+// error handlers
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.send(err)
+    });
+}
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.send('Error')
+});
+app.listen(3000, function () {
+    console.log('Example app listening on port 3000!');
+});
