@@ -1,8 +1,6 @@
 import exspress from 'express';
 
 import fetch from 'isomorphic-fetch';
-import  async from 'asyncawait/async';
-import await from 'asyncawait/await';
 import prom from "bluebird";
 import path from "path";
 import logger from "morgan";
@@ -21,11 +19,12 @@ app.use(cookieParser());
 app.use(cors());
 
 
-app.get('/', function(req, res, next){
+app.get('/', async function(req, res, next){
     res.send('hello world');
 });
 
 app.use('/users', users);
+
 
 
 
