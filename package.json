@@ -33,6 +33,7 @@
     "jade": "~1.11.0",
     "lodash": "^4.17.2",
     "morgan": "~1.7.0",
+    "mongoose": "^4.6.8",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
@@ -54,7 +55,8 @@
     "nodemon": "^1.11.0",
     "rollup": "^0.36.3",
     "rollup-plugin-babel": "^2.6.1",
-    "sinon": "^2.0.0-pre.3"
+    "sinon": "^2.0.0-pre.3",
+    "babel-types": "^6.19.0"
   },
   "scripts": {
     "lint": "eslint src test tools",

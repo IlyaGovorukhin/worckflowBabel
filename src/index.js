@@ -8,7 +8,8 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import cors from "cors";
 import favicon from 'serve-favicon';
-
+import _ from 'lodash';
+import mongoose from 'mongoose';
 const users = require('./users');
 const app = exspress();
 
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-
+mongoose.Promise = global.Promise;
 app.get('/', async function(req, res, next){
     res.send('hello world');
 });
